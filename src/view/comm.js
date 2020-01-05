@@ -15,7 +15,7 @@ function evalJSFromHtml(html) {
 //<!-- All of the Node.js APIs are available in this renderer process. -->
 // You can also require other files to run in this process
 //require('./renderer.js')
-var ws = new WebSocket("ws://localhost:6502/plotsocket/");
+var ws = new WebSocket("ws://"+$(location).attr('host')+"/plotsocket/");
 ws.onopen = function() {
   //ws.send("Hello, world");
 };
@@ -49,11 +49,11 @@ ws.onmessage = function(evt) {
 var showLocalGraph = function(node_name) {
   var data = {
     "v": node_name + ":E",
-    "layers": 60,
+    "layers": 120,
     "max_nodes": 3600
   };
   $("[href='#asmgraph']").tab("show")
-  $.post("http://localhost:6502/ShowLocalSG/", data,
+  $.post("http://"+$(location).attr('host')+"/ShowLocalSG/", data,
     function(g) {
       renderAsmGraph(g);
     });
