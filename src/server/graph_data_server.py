@@ -7,7 +7,7 @@ import logging
 
 import networkx as nx
 import json
-from falcon_kit.fc_asm_graph import AsmGraph
+from fc_asm_graph import AsmGraph
 
 def reverse_end( node_id ):
     node_id, end = node_id.split(":")
@@ -113,12 +113,12 @@ class GraphData(tornado.web.RequestHandler):
 
         elif req == "contig_sg":
             ctg = self.get_argument("ctg")
-            nodes = set() 
+            nodes = set()
             edges = []
-            s_utg_nodes = set() 
+            s_utg_nodes = set()
             s_utg_edges = []
             utgs = []
-            path = gds.get_ctg_path(ctg)[-1] 
+            path = gds.get_ctg_path(ctg)[-1]
             for s, v, t in path:
                 type_, length, score, path_or_edges =  gds.G_asm.utg_data[ (s, t, v) ]
                 utgs.append( (type_, path_or_edges) )
@@ -153,16 +153,16 @@ class GraphData(tornado.web.RequestHandler):
             rtn = {"nodes": tuple(nodes), "edges": edges, "s_utg_nodes": tuple(s_utg_nodes), "s_utg_edges": s_utg_edges}
             self.write( json.dumps( rtn ) )
 
-        elif req == "local_sg": 
+        elif req == "local_sg":
             v = self.get_argument("v")
             layers = self.get_argument("layers")
             layers = int(layers)
             max_nodes = self.get_argument("max_nodes")
             max_nodes = int(max_nodes)
-            
+
             nodes = set()
             edges = []
-            
+
             vB = v.split(":")[0] + ":B"
             vE = v.split(":")[0] + ":E"
             all_neighbor_nodes = set()
@@ -178,7 +178,7 @@ class GraphData(tornado.web.RequestHandler):
                         new_nodes.add(v)
                 all_neighbor_nodes.update( new_nodes )
                 l += 1
-             
+
             for n in list(all_neighbor_nodes):
                 for v, w in gds.full_asm_G.out_edges(n):
                     edges.append( (v, w) )
