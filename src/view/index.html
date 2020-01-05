@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<link
+<!-- <link
   href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.0.min.css"
 rel="stylesheet" type="text/css"></link>
 <link
   href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.0.min.css"
-rel="stylesheet" type="text/css"></link>
-<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.0.min.js"></script>
-<script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.0.min.js"></script>
+  rel="stylesheet" type="text/css"></link>a -->
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-1.4.0.min.js"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-1.4.0.min.js"></script>
 <script src="../view/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../view/node_modules/vivagraphjs/dist/vivagraph.min.js"></script>
 <link rel="stylesheet" src="../view/node_modules/bootstrap/dist/css/bootstrap.css">
@@ -63,14 +63,16 @@ svg { width: 800px; height: 600px; }
       <div class="row">
         <div class="col-md-9">
           <ul class="nav nav-pills">
-            <li class="active"><a data-toggle="tab" href="#dotplot">Dot Plot</a></li>
-            <li><a data-toggle="tab" href="#asmgraph">Assembly Graph </a></li>
+            <li class="active"><a data-toggle="tab" href="#asmgraph">Assembly Graph </a></li>
+            <!-- <li><a data-toggle="tab" href="#dotplot">Dot Plot</a></li> -->
           </ul>
           <div class="tab-content">
+            <!--
             <div id="dotplot" class="tab-pane fade in active">
               <div id="dotplotarea">choose a read in IGV, right click, choose ExtView</div>
             </div>
-            <div id="asmgraph" class="tab-pane fade">
+            -->
+            <div id="asmgraph" class="tab-pane fade in active">
               <div id="asmgrapharea"></div>
             </div>
           </div>
